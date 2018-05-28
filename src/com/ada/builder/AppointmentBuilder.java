@@ -36,12 +36,12 @@ public class AppointmentBuilder {
 	public void buildAppointment(){
 		appointment = new Appointment();
 	}
-	public void buildDates(Date stardDate, Date endDate) {
+	public void buildDates(Date startDate, Date endDate) {
 		Date currentDate = new Date();
-		if((stardDate != null) && (stardDate.after(currentDate))) {
-			appointment.setStardDate(stardDate);
+		if((startDate != null) && (startDate.after(currentDate))) {
+			appointment.setStardDate(startDate);
 		}
-		if((endDate != null) && (endDate.after(stardDate))) {
+		if((endDate != null) && (endDate.after(startDate))) {
 			appointment.setEndDate(endDate);
 		}
 	}
@@ -51,6 +51,11 @@ public class AppointmentBuilder {
 	public void buildAttendees(ArrayList attendees) {
 		if((attendees != null) && (!attendees.isEmpty())) {
 			appointment.setAttendees(attendees);
+		}
+	}
+	public void buildLocation(Location location) {
+		if (location == null) {
+			appointment.setLocation(location);
 		}
 	}
 	public Appointment getAppointment() throws InformationRequiredException{
